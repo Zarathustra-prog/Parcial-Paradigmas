@@ -1,4 +1,4 @@
-# README.md
+# README
 
 # Ejercicio 1: Student Grades Sorting
 
