@@ -138,3 +138,58 @@ Calificaciones: 90.5 85.0 88.0
 * `student.c`: Implementa funciones para crear, eliminar y mostrar registros de estudiantes.
 * `student.h`: Archivo de cabecera que define la estructura `Student` y los prototipos de funciones.
 
+# Ejercicio 3: Calculo Lamda
+
+$$
+0 = \lambda f.\lambda x. x
+$$
+$$
+1 = \lambda f.\lambda x. f x
+$$
+$$
+2 = \lambda f.\lambda x. f(f x)
+$$
+$$
+3 = \lambda f.\lambda x. f(f(f x))
+$$
+
+$$
+\text{CONS} = \lambda h.\lambda t.\lambda c.\lambda n. c\ h\ (t\ c\ n)
+$$
+$$
+\text{NIL} = \lambda c.\lambda n. n
+$$
+
+$$
+\text{ADD} = \lambda m.\lambda n.\lambda f.\lambda x. m\ f\ (n\ f\ x)
+$$
+$$
+\text{MUL} = \lambda m.\lambda n.\lambda f. m (n f)
+$$
+
+$$
+\text{SUM} = \lambda L. L\ \text{ADD}\ 0
+$$
+
+$$
+\text{FRACTION} = \lambda m.\lambda n. (\text{pair } m\ n)
+$$
+
+$$
+\text{AVERAGE} = \lambda L.\lambda n. \text{FRACTION} (\text{SUM } L) \ n
+$$
+
+$$
+L = \text{CONS } 1 \ (\text{CONS } 2 \ (\text{CONS } 3 \ \text{NIL}))
+$$
+
+$$
+\text{SUM } L = \text{ADD } 1 (\text{ADD } 2 3) = 6
+$$
+
+$$
+\text{AVERAGE } L\ 3 = \frac{6}{3} = 2
+$$
+
+
+
