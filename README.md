@@ -72,38 +72,69 @@ ghc haskell-declarative/DeclarativeApproach.hs -o main
 
 # Ejercicio 2:Sistema de Gestión de Estudiantes en C
 
-## Descripción
+## Descripción del Proyecto
 
-Este repositorio contiene un **sistema de gestión de estudiantes** desarrollado en C, optimizando el uso de memoria mediante **asignación dinámica**. Cada estudiante tiene un registro que incluye:
+Este proyecto implementa un sistema de gestión de estudiantes que permite la creación, eliminación y visualización de los registros de estudiantes. Cada registro de estudiante incluye:
 
-- Nombre  
-- Apellido  
-- Edad  
-- Número de identificación  
-- Conjunto de calificaciones  
+* Nombre
+* Apellido
+* Edad
+* Número de identificación
+* Calificaciones de diversos cursos
 
-El programa utiliza **`malloc` y `free`** para manejar la memoria de manera eficiente, asegurando que cada registro ocupe solo el espacio necesario y evitando desperdicio.
+El sistema utiliza asignación dinámica de memoria para asegurar un uso eficiente, adaptándose a la longitud variable de los nombres y al número de cursos por estudiante.
 
----
+## Funcionalidades
 
-## Características Principales
+* **Asignación Dinámica de Memoria**: Utiliza `malloc` y `free` para asignar y liberar memoria según sea necesario.
+* **Estructuras de Datos Optimizadas**: Implementa campos de bits (bitfields) para almacenar de manera compacta la edad y el número de identificación.
+* **Manejo Flexible de Datos**: Soporta cadenas de longitud variable para los nombres y arreglos dinámicos para las calificaciones.
+* **Gestión de Memoria**: Incluye funciones para crear y eliminar registros de estudiantes, asegurando una limpieza adecuada de la memoria.
 
-- **Nombres dinámicos:** Se asigna memoria exacta para los nombres y apellidos de los estudiantes.  
-- **Array dinámico de calificaciones:** Cada estudiante puede tener un número variable de calificaciones.  
-- **Campos optimizados:** Uso de **bitfields** para almacenar edad e identificación, reduciendo el consumo de memoria.  
-- **Gestión completa de memoria:** Funciones para crear y eliminar estudiantes liberando toda la memoria asignada.  
+## Como ejecutar
 
----
+1. Compila el programa en C:
 
-## Estructura de Datos
+   ```bash
+   gcc -o gestor_estudiantes main.c
+   ```
 
-```c
-typedef struct {
-    char *firstName;   // Nombre dinámico
-    char *lastName;    // Apellido dinámico
-    unsigned int age:7; // Edad (0-127)
-    unsigned int id:24; // ID (0-16,777,215)
-    size_t numGrades;  // Número de calificaciones
-    float *grades;     // Array dinámico de calificaciones
-} Student;
+2. Ejecuta el programa:
+
+   ```bash
+   ./gestor_estudiantes
+   ```
+
+## Uso
+
+Al ejecutar el programa, puedes:
+
+* **Crear un Estudiante**: Ingresar el nombre, apellido, edad, número de identificación y calificaciones.
+* **Mostrar Información del Estudiante**: Ver los detalles de todos los estudiantes almacenados.
+* **Eliminar un Estudiante**: Remover el registro de un estudiante del sistema.
+
+Ejemplo:
+
+```bash
+./gestor_estudiantes
+Ingrese el nombre del estudiante: Alice
+Ingrese el apellido del estudiante: Johnson
+Ingrese la edad del estudiante: 20
+Ingrese el ID del estudiante: 1001
+Ingrese el número de calificaciones: 3
+Ingrese la calificación 1: 90.5
+Ingrese la calificación 2: 85.0
+Ingrese la calificación 3: 88.0
+Registro de estudiante creado exitosamente.
+
+Mostrando todos los estudiantes:
+ID: 1001 | Nombre: Alice Johnson | Edad: 20
+Calificaciones: 90.5 85.0 88.0
+```
+
+## Estructura del Código
+
+* `main.c`: Contiene la función `main` y la lógica de interacción con el usuario.
+* `student.c`: Implementa funciones para crear, eliminar y mostrar registros de estudiantes.
+* `student.h`: Archivo de cabecera que define la estructura `Student` y los prototipos de funciones.
 
