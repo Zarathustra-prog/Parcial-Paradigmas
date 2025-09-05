@@ -70,3 +70,40 @@ ghc haskell-declarative/DeclarativeApproach.hs -o main
 ./main
 ```
 
+# Ejercicio 2:Sistema de Gestión de Estudiantes en C
+
+## Descripción
+
+Este repositorio contiene un **sistema de gestión de estudiantes** desarrollado en C, optimizando el uso de memoria mediante **asignación dinámica**. Cada estudiante tiene un registro que incluye:
+
+- Nombre  
+- Apellido  
+- Edad  
+- Número de identificación  
+- Conjunto de calificaciones  
+
+El programa utiliza **`malloc` y `free`** para manejar la memoria de manera eficiente, asegurando que cada registro ocupe solo el espacio necesario y evitando desperdicio.
+
+---
+
+## Características Principales
+
+- **Nombres dinámicos:** Se asigna memoria exacta para los nombres y apellidos de los estudiantes.  
+- **Array dinámico de calificaciones:** Cada estudiante puede tener un número variable de calificaciones.  
+- **Campos optimizados:** Uso de **bitfields** para almacenar edad e identificación, reduciendo el consumo de memoria.  
+- **Gestión completa de memoria:** Funciones para crear y eliminar estudiantes liberando toda la memoria asignada.  
+
+---
+
+## Estructura de Datos
+
+```c
+typedef struct {
+    char *firstName;   // Nombre dinámico
+    char *lastName;    // Apellido dinámico
+    unsigned int age:7; // Edad (0-127)
+    unsigned int id:24; // ID (0-16,777,215)
+    size_t numGrades;  // Número de calificaciones
+    float *grades;     // Array dinámico de calificaciones
+} Student;
+
